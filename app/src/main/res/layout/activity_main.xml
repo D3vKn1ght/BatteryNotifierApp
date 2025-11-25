@@ -1,68 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:gravity="center_horizontal"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
 
-    <!-- Hiển thị % pin thật to -->
-    <TextView
-        android:id="@+id/txtBattery"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="--%"
-        android:textSize="48sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:padding="24dp" />
-
-    <!-- Khoảng cách -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="16dp" />
-
-    <!-- Token Telegram -->
-    <EditText
-        android:id="@+id/edtToken"
-        android:hint="Telegram Bot Token"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword" />
-
-    <!-- Chat ID -->
-    <EditText
-        android:id="@+id/edtChatId"
-        android:hint="Telegram Chat ID"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="text" />
-
-    <!-- Hàng nút Lưu + Test -->
+    <!-- Khối hiển thị pin ở giữa màn hình -->
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:paddingTop="16dp">
+        android:id="@+id/batteryBlock"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/settingsBlock"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <Button
-            android:id="@+id/btnSave"
-            android:text="Lưu cấu hình"
-            android:layout_width="0dp"
+        <!-- Tiêu đề nhỏ bên trên -->
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:text="MỨC PIN HIỆN TẠI"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#888888"
+            android:letterSpacing="0.1"
+            android:paddingBottom="12dp" />
 
-        <View
-            android:layout_width="8dp"
-            android:layout_height="wrap_content" />
+        <!-- Vòng tròn hiển thị % pin -->
+        <FrameLayout
+            android:layout_width="220dp"
+            android:layout_height="220dp"
+            android:background="@drawable/battery_circle"
+            android:foregroundGravity="center">
 
-        <Button
-            android:id="@+id/btnTest"
-            android:text="Test"
-            android:layout_width="0dp"
+            <TextView
+                android:id="@+id/txtBattery"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="--%"
+                android:gravity="center"
+                android:textSize="60sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white" />
+        </FrameLayout>
+
+        <!-- Mô tả nhỏ bên dưới -->
+        <TextView
+            android:id="@+id/txtSubtitle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:text="Theo dõi và nhắc sạc pin khi thấp hơn 20%"
+            android:textSize="14sp"
+            android:textColor="#666666"
+            android:paddingTop="16dp" />
     </LinearLayout>
 
-</LinearLayout>
+    <!-- Khối cấu hình ở phía dưới -->
+    <LinearLayout
+        android:id="@+id/settingsBlock"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="#F5F5F5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/txtConfigTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cấu hình Telegram"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#333333"
+            android:paddingBottom="8dp" />
+
+        <EditText
+            android:id="@+id/edtToken"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Telegram Bot Token"
+            android:inputType="textPassword"
+            android:background="@android:drawable/edit_text"
+            android:padding="8dp"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/edtChatId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Telegram Chat ID"
+            android:inputType="text"
+            android:background="@android:drawable/edit_text"
+            android:padding="8dp"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="12dp">
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Lưu cấu hình" />
+
+            <View
+                android:layout_width="8dp"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btnTest"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Test" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtHint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bấm Test để gửi thử tin nhắn và phát âm thanh.\nApp sẽ tự kiểm tra pin nền mỗi 15 phút."
+            android:textSize="12sp"
+            android:textColor="#777777"
+            android:paddingTop="8dp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

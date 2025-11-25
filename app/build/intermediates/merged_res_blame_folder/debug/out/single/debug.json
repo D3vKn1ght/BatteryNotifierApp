@@ -16,6 +16,10 @@
         "source": "com.example.batterynotifier.app-main-38:/mipmap-anydpi-v26/ic_launcher.xml"
     },
     {
+        "merged": "com.example.batterynotifier.app-merged_res-36:/drawable_battery_circle.xml.flat",
+        "source": "com.example.batterynotifier.app-main-38:/drawable/battery_circle.xml"
+    },
+    {
         "merged": "com.example.batterynotifier.app-merged_res-36:/layout_activity_main.xml.flat",
         "source": "com.example.batterynotifier.app-main-38:/layout/activity_main.xml"
     }

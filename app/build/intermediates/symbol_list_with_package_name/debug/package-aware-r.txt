@@ -2910,6 +2910,7 @@ drawable abc_textfield_search_material
 drawable abc_vector_test
 drawable avd_hide_password
 drawable avd_show_password
+drawable battery_circle
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -3105,6 +3106,7 @@ id autoCompleteToEnd
 id autoCompleteToStart
 id barrier
 id baseline
+id batteryBlock
 id beginOnFirstDraw
 id beginning
 id bestChoice
@@ -3408,6 +3410,7 @@ id search_voice_btn
 id select_dialog_listview
 id selected
 id selection_type
+id settingsBlock
 id sharedValueSet
 id sharedValueUnset
 id shortcut
@@ -3493,6 +3496,10 @@ id transition_scene_layoutid_cache
 id transition_transform
 id triangle
 id txtBattery
+id txtConfigTitle
+id txtHint
+id txtSubtitle
+id txtTitle
 id unchecked
 id uniform
 id unlabeled
