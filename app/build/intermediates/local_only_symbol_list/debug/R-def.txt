@@ -6,8 +6,10 @@ color purple_700
 color teal_200
 color white
 id btnSave
+id btnTest
 id edtChatId
 id edtToken
+id txtBattery
 layout activity_main
 mipmap ic_launcher
 mipmap ic_launcher_foreground

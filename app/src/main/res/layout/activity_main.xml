@@ -2,25 +2,67 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:padding="16dp"
+    android:gravity="center_horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- Hiển thị % pin thật to -->
+    <TextView
+        android:id="@+id/txtBattery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="--%"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="24dp" />
+
+    <!-- Khoảng cách -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="16dp" />
+
+    <!-- Token Telegram -->
     <EditText
         android:id="@+id/edtToken"
         android:hint="Telegram Bot Token"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:inputType="textPassword" />
 
+    <!-- Chat ID -->
     <EditText
         android:id="@+id/edtChatId"
         android:hint="Telegram Chat ID"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:inputType="text" />
 
-    <Button
-        android:id="@+id/btnSave"
-        android:text="Lưu cấu hình"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <!-- Hàng nút Lưu + Test -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:paddingTop="16dp">
+
+        <Button
+            android:id="@+id/btnSave"
+            android:text="Lưu cấu hình"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <View
+            android:layout_width="8dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btnTest"
+            android:text="Test"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
 
 </LinearLayout>
