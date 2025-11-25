@@ -3106,7 +3106,6 @@ id autoCompleteToEnd
 id autoCompleteToStart
 id barrier
 id baseline
-id batteryBlock
 id beginOnFirstDraw
 id beginning
 id bestChoice
@@ -3410,7 +3409,6 @@ id search_voice_btn
 id select_dialog_listview
 id selected
 id selection_type
-id settingsBlock
 id sharedValueSet
 id sharedValueUnset
 id shortcut
@@ -3498,8 +3496,6 @@ id triangle
 id txtBattery
 id txtConfigTitle
 id txtHint
-id txtSubtitle
-id txtTitle
 id unchecked
 id uniform
 id unlabeled

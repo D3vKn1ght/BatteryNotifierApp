@@ -6,17 +6,13 @@ color purple_700
 color teal_200
 color white
 drawable battery_circle
-id batteryBlock
 id btnSave
 id btnTest
 id edtChatId
 id edtToken
-id settingsBlock
 id txtBattery
 id txtConfigTitle
 id txtHint
-id txtSubtitle
-id txtTitle
 layout activity_main
 mipmap ic_launcher
 mipmap ic_launcher_foreground
