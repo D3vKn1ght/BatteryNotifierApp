@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "com.example.batterynotifier.app-merged_res-36:/raw_battery_alert.mp3.flat",
+        "source": "com.example.batterynotifier.app-main-38:/raw/battery_alert.mp3"
+    },
+    {
+        "merged": "com.example.batterynotifier.app-merged_res-36:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.example.batterynotifier.app-main-38:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.example.batterynotifier.app-merged_res-36:/mipmap-hdpi_ic_launcher_foreground.xml.flat",
+        "source": "com.example.batterynotifier.app-main-38:/mipmap-hdpi/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.example.batterynotifier.app-merged_res-36:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.example.batterynotifier.app-main-38:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.example.batterynotifier.app-merged_res-36:/layout_activity_main.xml.flat",
+        "source": "com.example.batterynotifier.app-main-38:/layout/activity_main.xml"
+    }
+]
