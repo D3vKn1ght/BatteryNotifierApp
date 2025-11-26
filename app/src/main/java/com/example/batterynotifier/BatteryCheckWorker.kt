@@ -25,8 +25,11 @@ class BatteryCheckWorker(
         val batteryLevel = getBatteryLevel(appContext)
 
         if (batteryLevel in 1..19) {
+            // 1. Phát âm thanh
             playSound()
+            // 2. Notification
             showNotification(batteryLevel)
+            // 3. Gửi Telegram
             sendTelegramMessage("Pin chỉ còn $batteryLevel%. Hãy cắm sạc nhé!")
         }
 
@@ -47,9 +50,13 @@ class BatteryCheckWorker(
     }
 
     private fun playSound() {
-        val mp = MediaPlayer.create(appContext, R.raw.battery_alert)
-        mp.setOnCompletionListener { it.release() }
-        mp.start()
+        try {
+            val mp = MediaPlayer.create(appContext, R.raw.battery_alert)
+            mp.setOnCompletionListener { it.release() }
+            mp.start()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     private fun showNotification(batteryLevel: Int) {
@@ -61,6 +68,7 @@ class BatteryCheckWorker(
             .setContentTitle("Pin yếu ($batteryLevel%)")
             .setContentText("Đề nghị bạn cắm sạc.")
             .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setVisibility(NotificationCompat.VISIBILITY_PUBLIC) // hiện trên màn khóa
             .setAutoCancel(true)
             .build()
 
@@ -91,7 +99,7 @@ class BatteryCheckWorker(
                 val responseCode = conn.responseCode
                 if (responseCode == HttpURLConnection.HTTP_OK) {
                     val reader = BufferedReader(InputStreamReader(conn.inputStream))
-                    val response = reader.readText()
+                    reader.readText()
                     reader.close()
                 }
 

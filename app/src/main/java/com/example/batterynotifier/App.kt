@@ -1,6 +1,7 @@
 package com.example.batterynotifier
 
 import android.app.Application
+import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.media.AudioAttributes
@@ -20,7 +21,8 @@ class App : Application() {
 
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val soundUri: Uri = Uri.parse("android.resource://$packageName/${R.raw.battery_alert}")
+            val soundUri: Uri =
+                Uri.parse("android.resource://$packageName/${R.raw.battery_alert}")
 
             val audioAttributes = AudioAttributes.Builder()
                 .setUsage(AudioAttributes.USAGE_NOTIFICATION)
@@ -34,6 +36,8 @@ class App : Application() {
             ).apply {
                 setSound(soundUri, audioAttributes)
                 description = "Thông báo khi pin yếu"
+                // Cho phép hiện đầy đủ trên màn hình khóa
+                lockscreenVisibility = Notification.VISIBILITY_PUBLIC
             }
 
             val manager = getSystemService(NotificationManager::class.java)

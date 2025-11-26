@@ -1,8 +1,11 @@
 package com.example.batterynotifier
 
+import android.Manifest
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.pm.PackageManager
 import android.os.BatteryManager
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -10,6 +13,8 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import android.media.MediaPlayer
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
@@ -31,6 +36,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // Xin quyền thông báo (Android 13+)
+        requestNotificationPermissionIfNeeded()
+
         // Ánh xạ view
         txtBattery = findViewById(R.id.txtBattery)
         edtToken = findViewById(R.id.edtToken)
@@ -50,7 +58,11 @@ class MainActivity : AppCompatActivity() {
         btnSave.setOnClickListener {
             saveConfig()
             scheduleBatteryCheck()
-            Toast.makeText(this, "Đã lưu cấu hình & bật kiểm tra pin nền", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                this,
+                "Đã lưu cấu hình & bật kiểm tra pin nền",
+                Toast.LENGTH_SHORT
+            ).show()
         }
 
         // Nút Test: gửi tin nhắn Telegram + phát âm thanh
@@ -59,7 +71,11 @@ class MainActivity : AppCompatActivity() {
             val chatId = edtChatId.text.toString().trim()
 
             if (token.isEmpty() || chatId.isEmpty()) {
-                Toast.makeText(this, "Vui lòng nhập Telegram Bot Token và Chat ID trước.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "Vui lòng nhập Telegram Bot Token và Chat ID trước.",
+                    Toast.LENGTH_SHORT
+                ).show()
                 return@setOnClickListener
             }
 
@@ -84,6 +100,23 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         // Mỗi lần quay lại app thì cập nhật lại % pin
         updateBatteryLabel()
+    }
+
+    private fun requestNotificationPermissionIfNeeded() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            val granted = ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.POST_NOTIFICATIONS
+            ) == PackageManager.PERMISSION_GRANTED
+
+            if (!granted) {
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(Manifest.permission.POST_NOTIFICATIONS),
+                    1001
+                )
+            }
+        }
     }
 
     private fun saveConfig() {
@@ -162,8 +195,6 @@ class MainActivity : AppCompatActivity() {
                 val reader = BufferedReader(InputStreamReader(conn.inputStream))
                 reader.readText()
                 reader.close()
-            } else {
-                // Có thể log lại nếu muốn
             }
 
             conn.disconnect()
